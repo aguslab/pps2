@@ -1,8 +1,11 @@
 package ejercicio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public aspect Aspecto 
 {
-	private String conditionPath = "";
+	private List<String> conditionPath = new ArrayList<String>();
 	Object around():  execution(boolean eval()) 
     {
     	Object resultadoFuncion = proceed();
@@ -10,12 +13,10 @@ public aspect Aspecto
     	Boolean guardaIF = Boolean.parseBoolean(resultadoFuncion.toString());
     	
     	if(guardaIF)
-    		this.conditionPath += expression.getPredicate() + " "; 
+    		this.conditionPath.add(expression.getPredicate()); 
     	else
-    		this.conditionPath += "!" + expression.getPredicate() + " ";
-    	
-    	System.out.println(this.conditionPath);
-    	
+    		this.conditionPath.add("!" + expression.getPredicate());
+    
 		return resultadoFuncion;
     }
 }
