@@ -17,6 +17,6 @@ public aspect Aspecto
     	else
     		this.conditionPath.add("!" + expression.getPredicate());
     
-		return resultadoFuncion;
+		return this.conditionPath;
     }
 }
