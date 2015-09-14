@@ -32,7 +32,7 @@ public class Function
 			System.out.println("falso");
 		}
 		
-		Expression expression2 = new ExpressionXEqualsToY(x, y, condition);
+		Expression expression2 = new ExpressionXEqualsToY(x, y, "2==6");
 		if(expression2.eval())
 		{
 			System.out.println("verdad");
