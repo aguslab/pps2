@@ -1,25 +1,14 @@
-package ejercicio;
+package coverage.app;
+
+import coverage.expressions.ExpressionXLessThanY;
 
 public class Function 
 {
-	static Function f;
-
-    public static void main(String[] args)
-    {
-        new Function().iniciar();
-    }
-
-    void iniciar()
-    {
-    	int x = 2;
-		int y = 6;
-        f = new Function();
-        f.test(x,y,"2<6");
-    }
+	static Function function;
 
     void test(int x,int y, String condition)
     {
-    	Expression expression = new Expression(x, y, condition);
+    	ExpressionXLessThanY expression = new ExpressionXLessThanY(x, y, condition);
 		if(expression.eval())
 		{
 			System.out.println("verdad");
@@ -40,6 +29,5 @@ public class Function
 		{
 			System.out.println("falso");
 		}
-    
     }
 }

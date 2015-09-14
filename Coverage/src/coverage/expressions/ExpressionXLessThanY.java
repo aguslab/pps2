@@ -1,12 +1,12 @@
-package ejercicio;
+package coverage.expressions;
 
-
-public class Expression 
+//Evalua expresiones del tipo x<y
+public class ExpressionXLessThanY implements Expression
 {
 	private int x,y;
 	private String predicate;
 	
-	public Expression(int x, int y, String predicate)
+	public ExpressionXLessThanY(int x, int y, String predicate)
 	{
 		this.x = x;
 		this.y = y;
