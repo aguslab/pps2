@@ -1,19 +1,15 @@
 package coverage.app;
-
-import coverage.aspects.Aspect;
-import coverage.mock.Z3mock;
+import coverage.pathconditions.PathConditionList;
 
 public class Main 
 {
-	/*Initializer ejecuta la funcion
-	 * Z3mock lo hice para que sepas el metodo que hay que usar para darle el conditional path al verdadero z3
-	 * */
+	//Initializer ejecuta la funcion
     public static void main(String[] args)
     {
     	Initializer init = new Initializer();
+    	PathConditionList pcl = PathConditionList.getInstance();
+    	pcl.clear();
     	init.iniciar();
-    	Z3mock z3 = new Z3mock();
-    	z3.getConditionPath(Aspect.aspectOf().getConditionPath());
-    	z3.mostrarConditionPath();
+    	System.out.println(pcl.getList());
     }
 }

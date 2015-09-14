@@ -6,7 +6,7 @@ public class Initializer
     {
     	int x = 2;
 		int y = 6;
-        Function f = new Function();
-        f.test(x,y,"2<6");
+        InputFunction f = new InputFunction();
+        f.test(x,y);
     }
 }

@@ -1,15 +1,13 @@
 package coverage.expressions;
 
-public class ExpressionXEqualsToY implements Expression
+public class ExpressionXEqualsToY implements Expression 
 {
-	private int x,y;
-	private String predicate;
+	private int x, y;
 	
-	public ExpressionXEqualsToY(int x, int y, String predicate)
+	public ExpressionXEqualsToY(int x, int y) 
 	{
 		this.x = x;
 		this.y = y;
-		this.predicate = predicate;
 	}
 
 	@Override
@@ -21,14 +19,7 @@ public class ExpressionXEqualsToY implements Expression
 	@Override
 	public String getPredicate() 
 	{
-		return this.predicate;
+		return "x==y";
 	}
 
-	@Override
-	public void setExpression(int x, int y, String predicate) 
-	{
-		this.x = x;
-		this.y = y;
-		this.predicate = predicate;
-	}
 }
