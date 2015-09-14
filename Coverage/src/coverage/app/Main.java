@@ -7,7 +7,6 @@ public class Main
 {
 	/*Initializer ejecuta la funcion
 	 * Z3mock lo hice para que sepas el metodo que hay que usar para darle el conditional path al verdadero z3
-	 * (en caso de que sea necesario se puede usar un archivo. ver el paquete utils.)
 	 * */
     public static void main(String[] args)
     {

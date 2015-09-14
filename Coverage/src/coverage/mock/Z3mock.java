@@ -5,11 +5,11 @@ import java.util.List;
 //Simula el z3
 public class Z3mock 
 {
-	private List<String>conditionPath;
+	private String conditionPath;
 	
 	public Z3mock(){}
 	
-	public void getConditionPath(List<String> conditionPath)
+	public void getConditionPath(String conditionPath)
 	{
 		this.conditionPath = conditionPath;
 	}

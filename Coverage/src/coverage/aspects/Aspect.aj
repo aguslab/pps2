@@ -12,9 +12,10 @@ import coverage.expressions.ExpressionXLessThanY;
  * true: guardamos en una lista la guarda original
  * false: guardamos en una lista la guarda negada
  */
+
 public aspect Aspect 
 {
-	private List<String> conditionPath = new ArrayList<String>();
+	private String conditionPath = "";
 	
 	Object around():  execution(boolean eval()) 
     {
@@ -22,28 +23,17 @@ public aspect Aspect
     	Expression expression = (Expression) thisJoinPoint.getThis();
     	Boolean guardaIF = Boolean.parseBoolean(resultadoFuncion.toString());
     	if(guardaIF)
-    		this.conditionPath.add(expression.getPredicate()); 
+    		this.conditionPath += expression.getPredicate() + ","; 
     	else
-    		this.conditionPath.add("!" + expression.getPredicate());
+    		this.conditionPath += "!" + expression.getPredicate() + ","; 
     	
-    	/* Descomentar esto si z3 necesita usar archivos para leer el conditional path, sino borrarlo!
-    	StreamReader sr = new StreamReader();
-		try 
-		{
-			sr.guardarPrints();
-		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
-    	System.out.println(this.conditionPath);
-    	sr.close();*/
 		return resultadoFuncion;
     }
 	
 	//Para darle el condition path a z3
-	public List<String> getConditionPath()
+	public String getConditionPath()
 	{
+		this.conditionPath = this.conditionPath.replaceFirst(".$",""); 
 		return this.conditionPath;
 	}
 }
