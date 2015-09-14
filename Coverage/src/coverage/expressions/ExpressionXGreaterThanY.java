@@ -1,13 +1,13 @@
 package coverage.expressions;
 
-
-//Evalua expresiones del tipo x<y
-public class ExpressionXLessThanY implements Expression
+//Esto es necesario?
+//Evalua expresiones del tipo x>y
+public class ExpressionXGreaterThanY implements Expression
 {
 	private int x,y;
 	private String predicate;
 	
-	public ExpressionXLessThanY(int x, int y, String predicate)
+	public ExpressionXGreaterThanY(int x, int y, String predicate)
 	{
 		this.x = x;
 		this.y = y;
@@ -16,7 +16,7 @@ public class ExpressionXLessThanY implements Expression
 	
 	public boolean eval()
 	{
-		return this.x < this.y;
+		return this.x > this.y;
 	}
 	
 	public String getPredicate()

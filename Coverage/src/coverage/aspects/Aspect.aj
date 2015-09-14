@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import coverage.expressions.Expression;
 import coverage.expressions.ExpressionXLessThanY;
 
 /*Interferimos el metodo eval() que evalua y devuelve el resultado de una condicion, 
@@ -18,7 +19,7 @@ public aspect Aspect
 	Object around():  execution(boolean eval()) 
     {
     	Object resultadoFuncion = proceed();
-    	ExpressionXLessThanY expression = (ExpressionXLessThanY) thisJoinPoint.getThis();
+    	Expression expression = (Expression) thisJoinPoint.getThis();
     	Boolean guardaIF = Boolean.parseBoolean(resultadoFuncion.toString());
     	if(guardaIF)
     		this.conditionPath.add(expression.getPredicate()); 

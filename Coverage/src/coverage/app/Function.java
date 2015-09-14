@@ -1,5 +1,7 @@
 package coverage.app;
 
+import coverage.expressions.Expression;
+import coverage.expressions.ExpressionXEqualsToY;
 import coverage.expressions.ExpressionXLessThanY;
 
 public class Function 
@@ -8,7 +10,7 @@ public class Function
 
     void test(int x,int y, String condition)
     {
-    	ExpressionXLessThanY expression = new ExpressionXLessThanY(x, y, condition);
+    	Expression expression = new ExpressionXLessThanY(x, y, condition);
 		if(expression.eval())
 		{
 			System.out.println("verdad");
@@ -22,6 +24,16 @@ public class Function
 		expression.setExpression(x, y, "7<6");
 		
 		if(expression.eval())
+		{
+			System.out.println("verdad");
+		}
+		else
+		{
+			System.out.println("falso");
+		}
+		
+		Expression expression2 = new ExpressionXEqualsToY(x, y, condition);
+		if(expression2.eval())
 		{
 			System.out.println("verdad");
 		}
