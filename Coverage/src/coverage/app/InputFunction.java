@@ -1,6 +1,7 @@
 package coverage.app;
 
 import coverage.expressions.ExpressionXEqualsToY;
+import coverage.expressions.ExpressionXGreaterThanY;
 
 public class InputFunction 
 {
@@ -9,11 +10,17 @@ public class InputFunction
     {
 		if(new ExpressionXEqualsToY(x, y).eval())
 		{
-			System.out.println("verdad");
+			 System.out.println("son iguales");
 		}
 		else
 		{
-			System.out.println("falso");
+			System.out.println("son distintos");
+			if (new ExpressionXGreaterThanY(x, y).eval()) {
+				System.out.println("x mayor que y");
+			}
+			else {
+				System.out.println("x menor que y");
+			}
 		}
    }
 }

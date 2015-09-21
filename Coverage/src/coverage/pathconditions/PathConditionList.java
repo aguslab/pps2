@@ -9,6 +9,7 @@ public class PathConditionList
 	private static PathConditionList instance = null;
 	private List<String> conditionsList;
 	
+	
 	private PathConditionList() 
 	{ 
 		this.conditionsList = new ArrayList<String>();
@@ -20,6 +21,7 @@ public class PathConditionList
 			instance = new PathConditionList();
 		return instance;
 	}
+	
 	
 	public void addCondition(String condition) 
 	{
