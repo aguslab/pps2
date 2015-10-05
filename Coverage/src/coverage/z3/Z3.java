@@ -11,7 +11,7 @@ public class Z3 {
 		System.out.println("Z3: "+exp);
 		
 		exp = exp.replace(" ", "");
-		String comando = "python /home/galles/workspace/Java_Python/resources/example.py "
+		String comando = "python /home/galles/workspace_luna/Coverage/resources/example.py "
 				+ exp;
 
 		String output = executeCommand(comando);
