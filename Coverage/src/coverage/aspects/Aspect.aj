@@ -1,11 +1,6 @@
 package coverage.aspects;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import coverage.expressions.Expression;
-import coverage.expressions.ExpressionXLessThanY;
 import coverage.pathconditions.PathConditionList;
 
 /*Interferimos el metodo eval() que evalua y devuelve el resultado de una condicion, 
@@ -17,13 +12,14 @@ import coverage.pathconditions.PathConditionList;
 public aspect Aspect 
 {
 	
-	Object around():  execution(boolean eval()) 
+	Object around(): (!within(coverage.expressions.MarkedExpressionDecorator)) && execution(boolean eval()) 
     {
     	Object resultadoFuncion = proceed();
     	Expression expression = (Expression) thisJoinPoint.getThis();
     	Boolean guardaIF = Boolean.parseBoolean(resultadoFuncion.toString());
     	
     	PathConditionList pcl = PathConditionList.getInstance();
+    	
     	if(guardaIF)
     		pcl.addCondition("(" + expression.getPredicate() +")"); 
     	else

@@ -8,39 +8,39 @@ import java.util.Map;
 
 public class Z3 
 {
+	private static final String NO_SOLUTION = "no solution";
 
-	public Map<String, Integer> eval(String exp) 
+	public Map<String, Integer> eval(String exp) throws NoSolutionException
 	{
 		exp = exp.replace(" ", "");
-		String comando = "python ";
-		String path = "C:/z3/z3eval.py ";
+		String comando = "python C:/z3/z3eval.py " + exp;
 
-		String output = executeCommand(comando, path, exp);
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		String output = executeCommand(comando);
 		
-		if(!output.isEmpty())
+		if (output.trim().equals(NO_SOLUTION)) 
 		{
-			String[] valores = output.replace("[", "").replace("]", "").split(",");
-			for (String val : valores) 
-			{
-				String[] clave_valor = val.split("=");
-				map.put(clave_valor[0].trim(),Integer.valueOf(clave_valor[1].trim()));
-			}	
+			throw new NoSolutionException();
 		}
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		String[] valores = output.replace("[", "").replace("]", "").split(",");
+		for (String val : valores) 
+		{
+			String[] clave_valor = val.split("=");
+			map.put(clave_valor[0].trim(),Integer.valueOf(clave_valor[1].trim()));
+		}	
 		
 		return map;
 	}
 		
-	private String executeCommand(String command, String path, String exp) 
+	private String executeCommand(String command) 
 	{
 		StringBuffer output = new StringBuffer();
-		String[] cmd = new String[2];
-		cmd[0]= command;
-		cmd[1]= path + exp;
+		
 		Process p;
 		try 
 		{
-			p = Runtime.getRuntime().exec(cmd);
+			p = Runtime.getRuntime().exec(command);
 			p.waitFor();
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
