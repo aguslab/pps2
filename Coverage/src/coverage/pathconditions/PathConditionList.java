@@ -35,7 +35,7 @@ public class PathConditionList
 	
 	public List<String> getList() 
 	{
-		return this.conditionsList;
+		return new ArrayList<String>(this.conditionsList);
 	}
 
 }

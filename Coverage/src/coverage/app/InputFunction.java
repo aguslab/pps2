@@ -7,7 +7,7 @@ import coverage.expressions.ExpressionXGreaterThanY;
 public class InputFunction 
 {
   
-    void test(int x,int y)
+    public void test(int x,int y)
     {
 		if(new ExpressionXEqualsToY(x, y).eval())
 		{

@@ -12,7 +12,7 @@ import coverage.pathconditions.PathConditionList;
 public aspect Aspect 
 {
 	
-	Object around(): (!within(coverage.expressions.MarkedExpressionDecorator)) && execution(boolean eval()) 
+	Object around(): (within(coverage.expressions.*)) && execution(boolean eval()) 
     {
     	Object resultadoFuncion = proceed();
     	Expression expression = (Expression) thisJoinPoint.getThis();
