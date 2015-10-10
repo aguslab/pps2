@@ -3,9 +3,14 @@ package coverage.z3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import conditions.Condition;
+import conditions.ConditionAnalizer;
 
 public class Z3 
 {
@@ -69,6 +74,23 @@ public class Z3
 		}
 
 		return output.toString();
+	}
+	
+	public Map<String, Integer> getValues(List<Condition> conditions)
+	{
+		ConditionAnalizer conditionAnalizer = new ConditionAnalizer();
+		List<String> z3Conditions = new ArrayList<String>();
+		z3Conditions.addAll(conditionAnalizer.getExpressions(conditions));
 
+		Map<String, Integer> values = null;
+		try 
+		{
+			values = this.eval(conditionAnalizer.concatenate(z3Conditions));
+		} 
+		catch (NoSolutionException e)
+		{
+			e.printStackTrace();
+		}
+		return values;
 	}
 }

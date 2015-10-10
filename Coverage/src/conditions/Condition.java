@@ -23,12 +23,12 @@ public class Condition
 	@Override
 	public String toString() 
 	{
-		return "Condition [expression=" + expression + ", marked=" + marked + "]";
+		return "Condition [expression=" + expression + " marked=" + marked + "]";
 	}
 
 	public String getExpression() 
 	{
-		return expression;
+		return this.expression;
 	}
 	
 }

@@ -1,10 +1,7 @@
 package coverage.app;
 
-import coverage.expressions.ExpressionXGreaterOrEqualsThanY;
 import coverage.expressions.ExpressionXEqualsToValue;
 import coverage.expressions.ExpressionXEqualsToY;
-import coverage.expressions.ExpressionXGreaterThanValue;
-import coverage.expressions.ExpressionXGreaterThanY;
 import coverage.expressions.ExpressionXLessThanValue;
 import coverage.expressions.ExpressionXLessThanY;
 

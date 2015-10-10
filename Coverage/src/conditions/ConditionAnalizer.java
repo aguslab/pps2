@@ -3,11 +3,9 @@ package conditions;
 import java.util.ArrayList;
 import java.util.List;
 
-import coverage.pathconditions.PathConditionList;
-
 public class ConditionAnalizer 
 {
-	public static List<String> getExpressions(List<Condition> conditions) 
+	public List<String> getExpressions(List<Condition> conditions) 
 	{
 		List<String> result = new ArrayList<String>();
 		for (Condition condition : conditions) 
@@ -68,5 +66,41 @@ public class ConditionAnalizer
 			}
 		}
 		return result;
+	}
+	
+	public List<Condition> modifyConditionsState(List<Condition> conditions)
+	{
+		int lastIndex = conditions.size() - 1;
+		String lastCondition = conditions.get(lastIndex).getExpression();
+		Condition condition = new Condition(this.negateCondition(lastCondition));
+		condition.mark();
+		conditions.remove(lastIndex);
+		conditions.add(condition);
+		
+		return conditions;
+	}
+	
+	public String negateCondition(String condition) 
+	{
+		if(condition.startsWith("Not"))
+		{
+			return condition.substring(3,condition.length());
+		}
+		else
+		{
+			return "Not"+condition+"";
+		}
+	}
+
+	public String concatenate(List<String> args) 
+	{
+		String exp = "";
+		for (String pc : args) 
+		{
+			exp += pc + ",";
+
+		}
+		exp = exp.substring(0, exp.length() - 1);
+		return exp;
 	}
 }
