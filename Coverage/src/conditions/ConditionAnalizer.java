@@ -3,6 +3,8 @@ package conditions;
 import java.util.ArrayList;
 import java.util.List;
 
+import coverage.pathconditions.PathConditionList;
+
 public class ConditionAnalizer 
 {
 	public static List<String> getExpressions(List<Condition> conditions) 
@@ -11,21 +13,6 @@ public class ConditionAnalizer
 		for (Condition condition : conditions) 
 		{
 			result.add(condition.getExpression());
-		}
-		return result;
-	}
-
-	public List<Condition> cleanConditions(List<Condition> conditions) 
-	{
-		List<Condition> result = new ArrayList<Condition>();
-		if (conditions.size() > 0) 
-		{
-			int lastIndex = conditions.size() - 1;
-			while (!conditions.isEmpty()&&conditions.get(lastIndex).isMarked()) 
-			{
-				conditions.remove(lastIndex);
-				lastIndex--;
-			}
 		}
 		return result;
 	}
@@ -57,4 +44,29 @@ public class ConditionAnalizer
 		return result;
 	}
 	
+	public List<Condition> getConditions(List<String> expressions)
+	{
+		List<Condition> conditions = new ArrayList<Condition>();
+		for (String string : expressions) 
+		{
+			Condition condition = new Condition(string);
+			conditions.add(condition);
+		}
+		return conditions;
+	}
+	
+	public List<Condition> cleanConditions(List<Condition> conditions) 
+	{
+		List<Condition> result = new ArrayList<Condition>();
+		if (conditions.size() > 0) 
+		{
+			int lastIndex = conditions.size() - 1;
+			while (!conditions.isEmpty()&&conditions.get(lastIndex).isMarked()) 
+			{
+				conditions.remove(lastIndex);
+				lastIndex--;
+			}
+		}
+		return result;
+	}
 }

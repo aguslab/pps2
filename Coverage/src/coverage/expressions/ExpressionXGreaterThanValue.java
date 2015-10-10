@@ -21,7 +21,7 @@ public class ExpressionXGreaterThanValue implements Expression
 	@Override
 	public String getPredicate() 
 	{
-		return "x > " + value;
+		return "x>" + value;
 	}
 
 }

@@ -1,10 +1,10 @@
 package coverage.expressions;
 
-public class ExpresionXGreaterOrEqualsThanY implements Expression 
+public class ExpressionXGreaterOrEqualsThanY implements Expression 
 {
 private int x, y;
 	
-	public ExpresionXGreaterOrEqualsThanY(int x, int y) 
+	public ExpressionXGreaterOrEqualsThanY(int x, int y) 
 	{
 		this.x = x;
 		this.y = y;
